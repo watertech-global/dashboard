@@ -1,15 +1,17 @@
 //
-//Agent
+// Agent
 const mongoose = require('mongoose');
-//Instantiate a mongoose object
-//Then invoke the Schema method
-//Passing the JSON representation of the Agent Entity
+// Instantiate a mongoose object
+// Then invoke the Schema method
+// P assing the JSON representation of the Agent Entity
 const Agent = new mongoose.Schema({
-    idAgent : {type:Number, default:0},
-    //Get agent name, contacts and so on in user file
-    //Even creds : login and pw...gotten from user file
-    idUserAgent:Number,
-    idCompany:Number,
-    details: String
+  idAgent: { type: Number, default: '0' },
+  // Get agent name, contacts and so on in user file
+  // Even creds : login and pw...gotten from user file
+  // account : {type: Schema.ObjectId, ref: 'Account', required: true },
+  User: { type: Schema.ObjectId, ref: 'User', required: true },
+  Company: { type: Schema.ObjectId, ref: 'Company', required: true },
+  details: String,
 });
+
 module.exports = mongoose.model('Agent', Agent);
