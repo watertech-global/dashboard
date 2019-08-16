@@ -1,27 +1,23 @@
-
-//Watertech models
-//LiveData model
+// Watertech models
+// LiveData model
 const mongoose = require('mongoose');
 
 const LiveData = new mongoose.Schema({
-    idLiveData : {type:Number, default:0},
-    // Statuts 0 = specific data et 1 = general data
-    liveDataype : {type:Boolean, default:0},
-    liveDataDate: {type:Date, default:Date.now},
-    liveDataInstantaneousFlowRate : String, 
-    liveDataAverageFlowRate : String,
-    liveDataFlowControlLevel : String,
-    liveDataDailyConsumption : String,
-    liveDataTotalConsumption : String,
-    liveDataBatteryLevel : String,
-    liveDataGeneralInfos : String,
-    //Meter informations got from Meter
-    idMeter_LiveData: {type:Number},
-    //Customer informations got from Customer
-    idCustomer_LiveData: {type:Number},
-    //Task informations got from Task
-    idTask_LiveData: {type:Number},
-
-    
+  idLiveData: { type: Number, default: 0 },
+  liveDataype: { type: Boolean, default: 0 },
+  liveDataDate: { type: Date, default: Date.now },
+  liveDataInstantaneousFlowRate: String,
+  liveDataAverageFlowRate: String,
+  liveDataFlowControlLevel: String,
+  liveDataDailyConsumption: String,
+  liveDataTotalConsumption: String,
+  liveDataBatteryLevel: String,
+  liveDataGeneralInfos: String,
+  // Meter informations got from Meter
+  Meter: { type: Schema.number.ObjectId, ref: 'Meter', required: true },
+  // Customer informations got from Customer
+  Customer: { type: Schema.ObjectId, ref: 'Customer', required: true },
+  // Task informations got from Task
+  Task: { type: Schema.ObjectId, ref: 'Task', required: true },
 });
 module.exports = mongoose.model('LiveData', LiveData);
