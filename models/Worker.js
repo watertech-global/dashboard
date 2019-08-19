@@ -9,8 +9,8 @@ const Worker = new mongoose.Schema({
   // in the DB
 
   idWorker: { type: Number, default: 0 },
-  User: { type: Schema.ObjectId, ref: 'User', required: true },
-  Company: { type: Schema.ObjectId, ref: 'Company', required: true },
+  User: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  Company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
   // Worker Date of Join
   workerDoj: { type: Date },
   // Worker Contract Duration

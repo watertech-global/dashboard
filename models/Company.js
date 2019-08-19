@@ -7,7 +7,7 @@ const Company = new mongoose.Schema({
   // For all IDs
   companyName: { type: String, required: true },
   companyAdress: {
-    country: { type: Schema.ObjectId, ref: 'Country', required: true },
+    country: { type: mongoose.Schema.Types.ObjectId, ref: 'Country', required: true },
     number: { type: Number, default: 1 },
     street: String,
     zipCode: String,
@@ -20,7 +20,7 @@ const Company = new mongoose.Schema({
   },
   // A company has an account on wt
   // Add account model
-  account: { type: Schema.ObjectId, ref: 'Account', required: true },
+  account: { type: mongoose.Schema.Types.ObjectId, ref: 'Account', required: true },
   tariffCode: Number,
 });
 
