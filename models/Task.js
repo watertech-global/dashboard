@@ -12,8 +12,8 @@ const Task = new mongoose.Schema({
   idTaskUserAssignee: Number,
   taskInfo: String,
   // To get customer informations
-  Customer: { type: Schema.ObjectId, ref: 'Customer', required: true },
-  Meter: { type: Schema.ObjectId, ref: 'Meter', required: true },
+  Customer: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
+  Meter: { type: mongoose.Schema.Types.ObjectId, ref: 'Meter', required: true },
 });
 
 module.exports = mongoose.model('Task', Task);

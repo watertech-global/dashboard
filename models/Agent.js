@@ -9,8 +9,8 @@ const Agent = new mongoose.Schema({
   // Get agent name, contacts and so on in user file
   // Even creds : login and pw...gotten from user file
   // account : {type: Schema.ObjectId, ref: 'Account', required: true },
-  User: { type: Schema.ObjectId, ref: 'User', required: true },
-  Company: { type: Schema.ObjectId, ref: 'Company', required: true },
+  User: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  Company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
   details: String,
 });
 

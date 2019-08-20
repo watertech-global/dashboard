@@ -14,10 +14,10 @@ const LiveData = new mongoose.Schema({
   liveDataBatteryLevel: String,
   liveDataGeneralInfos: String,
   // Meter informations got from Meter
-  Meter: { type: Schema.number.ObjectId, ref: 'Meter', required: true },
+  Meter: { type: mongoose.Schema.Types.ObjectId, ref: 'Meter', required: true },
   // Customer informations got from Customer
-  Customer: { type: Schema.ObjectId, ref: 'Customer', required: true },
+  Customer: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
   // Task informations got from Task
-  Task: { type: Schema.ObjectId, ref: 'Task', required: true },
+  Task: { type: mongoose.Schema.Types.ObjectId, ref: 'Task', required: true },
 });
 module.exports = mongoose.model('LiveData', LiveData);

@@ -8,10 +8,9 @@ const Customer = new mongoose.Schema({
   // attributs according to its representation
   // in the DB
   idCustomer: { type: Number, default: 0 },
-  Company: { type: Schema.ObjectId, ref: 'Company', required: true },
+  Company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
   // Account informations got from user
-  Meter: { type: Schema.ObjectId, ref: 'Meter', required: true }
-
+  Meter: { type: mongoose.Schema.Types.ObjectId, ref: 'Meter', required: true },
 });
 
 module.exports = mongoose.model('Customer', Customer);
