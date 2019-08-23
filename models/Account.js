@@ -4,7 +4,14 @@
 const mongoose = require('mongoose');
 
 const Account = new mongoose.Schema({
-
+      Name: { type: String, required: true },
+      login: String,
+      password: String,
+      roleCode: { type: String, default: 'INDFND' },
+      accessType: String,
+      access: String,
+      createdAt: { type: Date, default: Date.now },
+      updateAt: { type: Date, default: null },
 });
 
 module.exports = mongoose.model('Account', Account);
