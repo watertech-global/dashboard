@@ -3,27 +3,27 @@ var async = require('async');
 var Customer = require('../models/Customer');
 var Meter = require ('../models/Meter');
 
-//import validators and sanitizer
-const { body, validationResult } = require('express-validator/check');
+// import validators and sanitizer
+const { body, validationResult } = require( ' express-validator/check' );
 const { sanitizeBody } = require('express-validator/filter');
 // Display list of all companies.
 exports.company_list = function(req, res, next) {
-  
-    Company.find()
+
+  Company.find()
     .sort([['companyName', 'ascending']])
     .exec(function (err, list_companies){
         if(err){return next(err);}
         //Else
         //Success : means no error!
         //send it on the page (view) 'companies'
-         res.send('companies', {title: 'Compagnies Abonnées', company list: list_companies });
+         res.send('companies', {title: 'Compagnies Abonnées', company_list: list_companies });
       });
-   
+
 };
 
 // Display detail page for a specific company.
 exports.company_detail = function(req, res, next) {
-    
+
     async.parallel({
       company: function(callback){
           Company.findById(req.params.id)
@@ -48,9 +48,10 @@ exports.company_detail = function(req, res, next) {
         res.render('companies',
                    {
                     title: 'Informations sur la compagnie',
-                    company; results.company,
+                    company: results.company,
                     company_customers: results.companies_customers,
                     company_meters: results.companies_meters
+
                     })
       });
 };
@@ -65,25 +66,25 @@ exports.company_create_get = function(req, res, next) {
 exports.company_create_post =[
     //First : validate fields
     body('companyName').isLength({min:1}).trim().withMessage('Le nom de la compagnie doit être specifié'),
-    
+
     //Then : sanitize fields
     sanitizeBody('*').escape(),
     //Finaly : process request after validation and sanitization
     function (req, res, next){
       //Extract the validation errors from req
       const errors = validationResult(req);
-      
+
       //Create Company object
       var company = new Company (
       {
         companyName: req.body.companyName,
         //This address data, can be simply saved as a text, but coded as a mixed pattern
         companyAdress: req.body.companyAdress,
-        companyContact req.body.companyContact,
+        companyContact: req.body.companyContact,
         account: req.body.account,
         tarrifCode: req.body.tarrifCode
         });
-      
+
       if(!errors.isEmpty()){
         //There are errors. Render form again with sanitized values/errors messages
         //The company_form is the view we render on fields that are filled with data
@@ -128,7 +129,7 @@ exports.company_delete_get = function(req, res, next) {
         //Let's render then
         res.render('company_delete', {title: 'Supprimer compangie abonnée', company: results.company, company_customers : results.company_customers, company_meters : results.company_meters});
       });
-    
+
 };
 
 // Handle company delete on POST.
@@ -144,7 +145,7 @@ exports.company_delete_post = function(req, res, next) {
          Meter.find({'company': req.body.companyid}).exec(callback)
       },
     }, function (err, results){
-      
+
       if(err){return next(err);}
       //Success
       if(results.company_customers.length > 0 && results.company_customers.length > 0){
@@ -207,9 +208,9 @@ exports.company_update_post = [
                 companyName: req.body.companyName,
                 //This address data, can be simply saved as a text, but coded as a mixed pattern
                 companyAdress: req.body.companyAdress,
-                companyContact req.body.companyContact,
+                companyContact: req.body.companyContact,
                 account: req.body.account,
-                tarrifCode: req.body.tarrifCode
+                tarrifCode: req.body.tarrifCode,
                 _id: req.params.id
             }
         );
