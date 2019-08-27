@@ -4,7 +4,6 @@
 const mongoose = require('mongoose');
 
 const Task = new mongoose.Schema({
-  idTask: { Type: Number, default: 0 },
   taskStartDate: { Type: Date, default: Date.now },
   taskDuration: { Type: Number, default: 0 },
   taskStatus: { Type: String, default: 'pending' },
