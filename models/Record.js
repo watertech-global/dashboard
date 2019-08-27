@@ -7,8 +7,6 @@ const Record = new mongoose.Schema({
   // here define all the entity
   // attributs according to its representation
   // in the DB
-
-  idRecord: { type: Number, default: 0 },
   recordDate: { Type: Date, default: Date.now },
   recordActionType: { type: Number },
   recordActionSummary: String,
