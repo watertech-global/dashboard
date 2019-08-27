@@ -8,7 +8,6 @@ const Meter = new mongoose.Schema({
   // attributs according to its representation
   //  in the DB
 
-  idMeter: { type: Number, default: 0 },
   meterMacNumber: String,
   meterRFIDNumber: String,
   meterSIMNumber: String,
