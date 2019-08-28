@@ -7,10 +7,11 @@ const Customer = new mongoose.Schema({
   // here define all the entity
   // attributs according to its representation
   // in the DB
-  company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
-  meter: { type: mongoose.Schema.Types.ObjectId, ref: 'Meter', required: true },
+  idCustomer: { type: Number, default: 0 },
+  Company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
   // Account informations got from user
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  Meter: { type: mongoose.Schema.Types.ObjectId, ref: 'Meter', required: true },
+  User: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
 module.exports = mongoose.model('Customer', Customer);
