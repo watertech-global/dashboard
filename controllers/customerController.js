@@ -11,8 +11,7 @@ const { sanitizeBody } = require('express-validator/filter');
 
 // Display list of all customers.
 exports.customer = function(req, res, next) {
-
-  Company.find()
+  Customer.find()
     //.sort([['companyName', 'ascending']])
     .exec(function (err, customers){
         if(err){return next(err);}
@@ -80,7 +79,7 @@ exports.customer_create_post =[
       {
         Company:  req.body.companyId,
         Meter: req.body.meterId,
-        Account: req.body.accountId,,
+        Account: req.body.accountId,
         });
 
       if(!errors.isEmpty()){
@@ -110,7 +109,11 @@ exports.customer_create_post =[
 // Display customer delete form on GET.
 exports.customer_delete_get = function(req, res, next) {
     async.parallel({
-      Customer.findOneAndRemove ({_id: req.params.id})
+
+      customer: function(callback){
+        Customer.findOneAndRemove ({_id: req.params.id})
+          .exec(callback)
+      }
       },function (err, results){
         if(err) {return next(err);}
         if(results.Customer ===null){
@@ -164,7 +167,7 @@ exports.customer_update_post = [
             {
               Company:  req.body.companyId,
               Meter: req.body.meterId,
-              Account: req.body.accountId,,
+              Account: req.body.accountId,
             }
         );
 
