@@ -12,6 +12,7 @@ const Account = new mongoose.Schema({
       access: String,
       createdAt: { type: Date, default: Date.now },
       updateAt: { type: Date, default: null },
+      User: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 });
 
 module.exports = mongoose.model('Account', Account);
